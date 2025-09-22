@@ -6,7 +6,7 @@ import string
 with open("OSB.json") as f:
     input_data = json.load(f)
 
-output_folder = "output_pdfs/"
+output_folder = "output_pdfs/osb/"
 
 def format_case(case):
     title = "# {} #\n".format(case["case_title"])

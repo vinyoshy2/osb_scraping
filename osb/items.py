@@ -6,7 +6,10 @@
 import scrapy
 
 
-class OsbItem(scrapy.Item):
+class SCItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    file_urls = scrapy.Field()
+    case_id = scrapy.Field()
+    short_description = scrapy.Field()
+    case_title = scrapy.Field()
+    source = scrapy.Field()
