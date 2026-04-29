@@ -1,5 +1,4 @@
 import json
-from html_to_markdown import convert_to_markdown
 from pypdf import PdfReader, PdfWriter
 from io import BytesIO
 import string 

@@ -30,10 +30,22 @@ def gen_filename(case):
 def is_summary(case):
     return "Summary decisions examin" in case["content"]
 
+new_json = []
 for case in input_data:
     if not is_summary(case):
+        new_json_entry = {}
         case_str = format_case(case)
         filename = gen_filename(case)
+        new_json_entry["case_id"] = filename
+        new_json_entry["short_description"] = case["short_description"]
+        new_json_entry["case_title"] = case["case_title"]
+        new_json_entry["content"] = case["content"]
+        new_json_entry["tags"] = case["tags"]
+        new_json_entry["case_type"] = case["case_type"]
+        new_json_entry["case_outcome"] = case["case_outcome"]
         full_path = "{}{}.pdf".format(output_folder, filename)
         md2pdf(pdf_file_path=full_path, md_content=case_str)
+        new_json.append(new_json_entry)
+with open("OSB_clean.json", "w+") as f:
+    f.write(json.dumps(new_json, indent=4))
 
